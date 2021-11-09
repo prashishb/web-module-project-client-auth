@@ -12,6 +12,73 @@ export const Container = styled.div`
   background: #262936;
 `;
 
+export const FriendsContainer = styled.div`
+  width: 600px;
+  background: #292c3a;
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  min-height: 420px;
+  margin: calc(80px + 10px) auto;
+
+  @media (max-width: 400px) {
+    width: 80%;
+  }
+`;
+
+export const WelcomeText = styled.h1`
+  margin-top: calc(90px + 10px);
+  text-align: center;
+  color: white;
+`;
+
+export const H2 = styled.h2`
+  margin: 0;
+  margin-bottom: 20px;
+  text-align: center;
+`;
+
+export const FriendList = styled.ul`
+  padding: 0;
+  margin: 0 15px 30px;
+  list-style: none;
+  border-top: 1px solid #ddd;
+`;
+
+export const TableWrapper = styled.div`
+  border-radius: 5px;
+  overflow: hidden;
+`;
+
+export const Table = styled.table`
+  font-size: 18px;
+  width: 100%;
+  border-spacing: 0;
+
+  tr {
+    background-color: #262936;
+    padding: 20px;
+    vertical-align: middle;
+    height: 33px;
+
+    &:nth-child(even) {
+      background-color: #2f3247;
+    }
+  }
+
+  td {
+    padding: 4%4%;
+    align-content: center;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 12px;
+  }
+`;
+
+//AddFriend Component
+
 export const FormWrap = styled.div`
   height: 100%;
   display: flex;

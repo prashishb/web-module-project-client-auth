@@ -3,14 +3,12 @@ import axios from 'axios';
 import {
   Container,
   FormWrap,
-  Icon,
   FormContent,
   Form,
   FormH1,
   FormLabel,
   FromInput,
   FormButton,
-  Text,
 } from './LoginElements';
 
 class Login extends React.Component {
@@ -35,7 +33,11 @@ class Login extends React.Component {
     axios
       .post('http://localhost:5000/api/login', this.state.credentials)
       .then((res) => {
-        console.log(res);
+        localStorage.setItem('token', res.data.payload);
+        localStorage.setItem('role', res.data.role);
+        localStorage.setItem('username', res.data.username);
+        this.props.loggedOn();
+        this.props.history.push('/friends');
       })
       .catch((err) => {
         console.log(err);
@@ -47,25 +49,26 @@ class Login extends React.Component {
       <>
         <Container>
           <FormWrap>
-            <Icon to='/'>friendsApp</Icon>
             <FormContent>
               <Form onSubmit={this.login}>
                 <FormH1>Log in to your account</FormH1>
                 <FormLabel htmlFor='for'>Username:</FormLabel>
                 <FromInput
-                  type='email'
-                  placeholder='john@example.com'
+                  type='text'
+                  name='username'
+                  value={this.state.credentials.username}
                   required
                   onChange={this.handleChange}
                 />
                 <FormLabel htmlFor='for'>Password:</FormLabel>
                 <FromInput
                   type='password'
+                  name='password'
+                  value={this.state.credentials.password}
                   required
                   onChange={this.handleChange}
                 />
                 <FormButton type='submit'>Login</FormButton>
-                <Text>Forgot password</Text>
               </Form>
             </FormContent>
           </FormWrap>
